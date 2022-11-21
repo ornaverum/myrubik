@@ -1,0 +1,91 @@
+// Reference 1 https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function#matrix3d()
+
+const selectFace = document.querySelector('select');
+// const selectOpElem = document.querySelector('selectOp');
+
+const cubeSec= document.querySelector('#cube');
+const colorArray = ["white", "green", "red", "blue", "orange", "yellow", "pink", "black", "magenta" ]
+
+const ssArray = ['', 'rotateX(90deg)', 'rotateX(-90deg)', 'rotateY(90deg)', 'rotateY(-90deg)', 'rotateY(180deg)']
+const faceArray = ['Up', 'West', 'South', 'East', 'North', 'Down']
+const faceOpposites = {Up: 'Down', Down: 'Up', West: 'East', East: 'Westt', South: 'North', North: 'South'};
+
+const faceProps = {};
+
+let dic = {};
+dic["Name"] = "Up";
+dic["Opposite"] = "Down";
+dic["Rotation"] = "";
+dic["Color"] = 'white';
+faceProps["Up"] = {...dic};
+
+dic = {};
+dic["Name"] = "Down";
+dic["Opposite"] = "Up";
+dic["Rotation"] = "rotateY(180deg)";
+dic["Color"] = 'yellow';
+faceProps["Down"] = {...dic};
+
+dic = {};
+dic["Name"] = "South";
+dic["Opposite"] = "North";
+dic["Rotation"] = "rotateX(90deg) rotateY(90deg)";
+dic["Color"] = 'blue';
+faceProps["South"] = {...dic};
+
+dic = {};
+dic["Name"] = "North";
+dic["Opposite"] = "South";
+dic["Rotation"] = "rotateX(90deg) rotateY(-90deg)";
+dic["Color"] = 'green';
+faceProps["North"] = {...dic};
+
+dic = {};
+dic["Name"] = "East";
+dic["Opposite"] = "West";
+dic["Rotation"] = "rotateX(90deg) rotateY(180deg)";
+dic["Color"] = 'red';
+faceProps["East"] = {...dic};
+
+dic = {};
+dic["Name"] = "West";
+dic["Opposite"] = "East";
+dic["Rotation"] = "rotateX(90deg) rotateZ(270deg)";
+dic["Color"] = 'orange';
+faceProps["West"] = {...dic};
+
+
+
+for (const [face, props] of Object.entries(faceProps)){
+  const d = document.createElement('div');
+  d.classList.add('cubie');
+  d.classList.add(props["Name"]);
+  // d.setAttribute("transform-origin", '100px');
+  d.style.transformOrigin = '27px 27px 75px';
+  if(props["Rotation"])
+    d.style.transform =   `${props["Rotation"]}`;
+    // d.setAttribute('transform', `${props["Rotation"]} translateZ(50px)`);
+  cubeSec.appendChild(d);
+  for (let i = -1; i < 2; i ++)
+    for (let j = -1; j < 2; j++){
+      const e = document.createElement('span');
+      e.classList.add('face');
+      e.style.background = props["Color"];
+      e.style.transform = `translate3d(${i*50}px, ${j*50}px,0px)`;
+      console.log(e);
+      d.appendChild(e);
+    }
+}
+
+selectFace.addEventListener('change', () => {
+  if (selectFace.value === 'Choose a function') {
+    return;
+  } else {
+    cubeSec.style.transform = `rotate3d(1, 1, 1, 30deg) ${selectFace.value}`;
+    setTimeout(() => {
+      // example.style.transform = 'rotate3d(1, 1, 1, 30deg) translate3d(200px, 100px, 0px)';
+      cubeSec.style.transform = 'rotate3d(1, 1, 1, 30deg)';
+
+    }, 2000)
+  }
+})

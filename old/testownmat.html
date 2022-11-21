@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <script src="test.js" async defer></script>
+        <section id="cube"></section>
+        <div class="slidecontainer">
+            <label for="myRange">Rotate X</label>
+            <input type="range" min="-180" max="180" value="0" class="slider" id="myRange">
+            <H2>My Range = </H2> <span id="output">0</span>
+        </div>
+
+        <div class="select-form">
+            <label for="facechoice">Select a rotation</label>
+            <button class="rotation-button" id="xplus" onclick="rotateFocus(1)">x+</button>
+            <button class="rotation-button" id="xminus" onclick="rotateFocus(-1)">x-</button>
+            <button class="rotation-button" id="yplus" onclick="rotateFocus(2)">y+</button>
+            <button class="rotation-button" id="yminus" onclick="rotateFocus(-2)">y-</button>
+            <button class="rotation-button" id="zplus" onclick="rotateFocus(3)">z+</button>
+            <button class="rotation-button" id="zminus" onclick="rotateFocus(-3)">z-</button>
+        </div>
+        
+    </body>
+</html>
