@@ -44,6 +44,7 @@ let sideProps = Object.assign({}, ...sides.map((x, i)=>(
 {[x]:{'Name': x, 'Color':colors[i], 'rotation':rot[i]}}
 )));
 
+// const transOrgCubie = '0px 0px 0px';
 const transOrgCubie = '27px 27px 0px';
 const transOrgFace = '0px 0px -13px'
 
@@ -77,6 +78,7 @@ rotateSide = (op)=>{
   let n = document.querySelectorAll(`.${face}`);
   // console.log('cubies selected = ', n);
   n.forEach((i)=>{
+    // let s = `${rot} ${i.style.transform}`;
     let s = `${rot} ${i.style.transform}`;
     // console.log(i, s);
     i.style.transform = s;
